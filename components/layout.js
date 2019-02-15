@@ -1,13 +1,15 @@
 import Head from "next/head";
 import styled from "styled-components";
 
+// import jug from "../static/img/jug.jpg";
+// import pudge from "../static/img/pudge.jpg";
+
 import Nav from "./Nav";
 
 import "bulma/css/bulma.min.css";
 import "../static/styles.css";
 
 const Wrapper = styled.div`
-  /* background: #fc100; */
   min-height: 100vh;
 `;
 const Inner = styled.div`

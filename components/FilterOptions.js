@@ -1,6 +1,8 @@
 export default ({ open }) => {
   return (
-    <div className={`filter-options ${open ? "filter-opened" : ""}`}>
+    <div
+      className={`filter-options ${open ? "filter-opened" : "filter-closed"}`}
+    >
       <div className="columns">
         <div className="column">
           <p>column 1</p>
