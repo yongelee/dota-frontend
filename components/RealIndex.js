@@ -1,10 +1,10 @@
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import styled from "styled-components";
 
-import Layout from "../components/layout";
-import StatsRow from "../components/StatsRow";
-import FilterOptions from "../components/FilterOptions";
-import InfoTitle from "../components/InfoTitle";
+import Layout from "./layout";
+import StatsRow from "./StatsRow";
+import FilterOptions from "./FilterOptions";
+import InfoTitle from "./InfoTitle";
 
 const Wrapper = styled.div`
   display: flex;
@@ -23,6 +23,7 @@ const FilterMenu = styled.div`
 `;
 
 export default () => {
+  console.log("here rendered");
   const [open, setOpen] = useState(false);
 
   return (
@@ -33,8 +34,8 @@ export default () => {
         </FilterMenu>
         <InfoTitle />
         <Wrapper>
-          <StatsRow />
           <FilterOptions open={open} />
+          <StatsRow />
         </Wrapper>
       </section>
     </Layout>

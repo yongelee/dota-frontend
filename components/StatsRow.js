@@ -16,9 +16,27 @@ export default () => {
     .filter(key => state.filters[key])
     .map(key => key);
 
+<<<<<<< Updated upstream
   const tourn_ids = Object.keys(state.tourns)
     .filter(key => state.tourns[key].checked)
     .map(key => key);
+=======
+  if (loading) {
+    return (
+      <div className="stats-row">
+        <p>Loading...</p>
+      </div>
+    );
+  }
+
+  if (error) {
+    return (
+      <div className="stats-row">
+        <p>Error...</p>
+      </div>
+    );
+  }
+>>>>>>> Stashed changes
 
   return (
     <Query
