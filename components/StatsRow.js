@@ -16,6 +16,7 @@ export default () => {
     .filter(key => state.filters[key])
     .map(key => key);
 
+<<<<<<< HEAD
 <<<<<<< Updated upstream
   const tourn_ids = Object.keys(state.tourns)
     .filter(key => state.tourns[key].checked)
@@ -37,6 +38,11 @@ export default () => {
     );
   }
 >>>>>>> Stashed changes
+=======
+  const tourn_ids = Object.keys(state.tourns)
+    .filter(key => state.tourns[key].checked)
+    .map(key => key);
+>>>>>>> parent of a774cb8... added more context and check all working
 
   return (
     <Query
