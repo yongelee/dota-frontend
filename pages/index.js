@@ -22,7 +22,7 @@ const FilterMenu = styled.div`
   }
 `;
 
-export default () => {
+export default ({ apolloClient }) => {
   const [open, setOpen] = useState(false);
 
   return (
@@ -34,7 +34,7 @@ export default () => {
         <InfoTitle />
         <Wrapper>
           <StatsRow />
-          <FilterOptions open={open} />
+          <FilterOptions open={open} client={apolloClient} />
         </Wrapper>
       </section>
     </Layout>
