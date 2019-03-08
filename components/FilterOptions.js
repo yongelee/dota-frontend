@@ -1,13 +1,14 @@
 import { useContext } from "react";
-import { FilterContext } from "../lib/filterContext";
+import { observer } from "mobx-react-lite";
+import { RootStoreContext } from "../lib/rootStore";
+
 import StatsCheckboxes from "./StatsCheckboxes";
 import TournamentCheckboxes from "./TournamentCheckboxes";
-import { SelectedContext, UPDATE_SELECTED } from "../lib/selectedContext";
+
+import "pretty-checkbox/dist/pretty-checkbox.min.css";
 
 const FilterOptions = ({ open, client }) => {
-  const { filterState } = useContext(FilterContext);
-
-  const { selectedDispatch } = useContext(SelectedContext);
+  const { statsStore, tournamentStore } = useContext(RootStoreContext);
 
   return (
     <div
@@ -16,37 +17,56 @@ const FilterOptions = ({ open, client }) => {
       <div className="columns">
         <div className="column">
           <button
+            className="button is-fullwidth is-info"
             onClick={() => {
-              // get all selected stats from state
-              const statsSelected = [];
-              Object.keys(filterState.stats).map((key) => {
-                if (filterState.stats[key].checked) {
-                  statsSelected.push(key);
-                }
-              });
-              if (statsSelected.length === 0) {
-                alert("You need to select some stats");
-              } else {
-                // update the selected context
-                selectedDispatch({
-                  type: UPDATE_SELECTED,
-                  payload: { statsSelected }
-                });
-              }
+              /**
+               * Get selected stats
+               * and tournaments from mobx stores
+               * and send request to server
+               * to update the results views
+               */
+              tournamentStore.setSelectedTournaments();
+              statsStore.setSelectedAvg();
+              statsStore.setSelectedTotal();
             }}
           >
-            submit
+            Update Results
           </button>
         </div>
       </div>
       <div className="columns">
         <div className="column">
+          <p className="title is-5">Select Stats:</p>
           <StatsCheckboxes />
         </div>
       </div>
       <div className="columns">
         <div className="column">
+          <p className="title is-5">Select Tournaments:</p>
           <TournamentCheckboxes client={client} />
+        </div>
+      </div>
+      <div className="columns">
+        <div className="column">
+          <button
+            className="button is-fullwidth is-info"
+            onClick={() => {
+              /**
+               * Get selected stats
+               * and tournaments from mobx stores
+               * and send request to server
+               * to update the results views
+               */
+              const selectedAvg = statsStore.selectedAvg;
+              const selectedTotal = statsStore.selectedTotal;
+              const selectedTournaments = tournamentStore.selectedTournaments;
+              // console.log(selectedAvg);
+              // console.log(selectedTotal);
+              // console.log(selectedTournaments);
+            }}
+          >
+            Update Results
+          </button>
         </div>
       </div>
     </div>

@@ -1,3 +1,8 @@
+.checkbox-style {
+  display: block !important;
+  margin: 1rem 0;
+}
+
 .border-it {
   border: 1px solid black;
 }
@@ -12,7 +17,6 @@
   margin: 1rem;
   padding: 1rem;
   flex: 2;
-  height: 500px;
   background-color: aliceblue;
   /* background-image: linear-gradient(to top, #a18cd1 0%, #fbc2eb 100%); */
 }

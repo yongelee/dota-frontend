@@ -1,48 +1,90 @@
 import { useContext } from "react";
+import { observer } from "mobx-react-lite";
+import { RootStoreContext } from "../lib/rootStore";
 
-import {
-  FilterContext,
-  CHECK_ALL_STATS,
-  CHECK_STAT
-} from "../lib/filterContext";
-
-function StatsCheckboxes() {
-  const {
-    filterState: { stats },
-    filterDispatch
-  } = useContext(FilterContext);
+const StatsCheckboxes = observer(() => {
+  const { statsStore } = useContext(RootStoreContext);
 
   return (
-    <div>
-      <div>
-        <label className="checkbox">
+    <div className="columns is-mobile">
+      {/* 1st half is averages per game */}
+      <div className="column is-half">
+        <p className="subtitle">Avg per game</p>
+
+        {/* Select all button */}
+        <div className="pretty p-default p-curve checkbox-style">
           <input
             type="checkbox"
-            checked={stats.allStats}
-            onChange={() =>
-              filterDispatch({
-                type: CHECK_ALL_STATS,
-                payload: { checked: stats.allStats }
-              })
-            }
+            checked={statsStore.allAvg}
+            onChange={() => {
+              const currentCheck = statsStore.allAvg;
+              statsStore.allAvg = !currentCheck;
+              Object.keys(statsStore.avg).forEach((key) => {
+                statsStore.avg[key].selected = !currentCheck;
+              });
+            }}
           />
-          Check all
-        </label>
+          <div className="state p-success">
+            <label>Select all</label>
+          </div>
+        </div>
+
+        {/* All of the stats options */}
+        {Object.keys(statsStore.avg).map((key, i) => (
+          <div className="pretty p-default p-curve checkbox-style" key={i}>
+            <input
+              type="checkbox"
+              checked={statsStore.avg[key].selected}
+              onChange={() =>
+                (statsStore.avg[key].selected = !statsStore.avg[key].selected)
+              }
+            />
+            <div className="state p-primary">
+              <label>{statsStore.avg[key].name}</label>
+            </div>
+          </div>
+        ))}
       </div>
-      {Object.keys(stats).map((key, i) => (
-        <label className="checkbox" key={i}>
+      {/* 2nd half is total */}
+      <div className="column is-half">
+        <p className="subtitle">Total</p>
+
+        {/* Select all button */}
+        <div className="pretty p-default p-curve checkbox-style">
           <input
             type="checkbox"
-            checked={stats[key].checked}
-            onChange={() =>
-              filterDispatch({ type: CHECK_STAT, payload: { key } })
-            }
+            checked={statsStore.allTotal}
+            onChange={() => {
+              const currentCheck = statsStore.allTotal;
+              statsStore.allTotal = !currentCheck;
+              Object.keys(statsStore.total).forEach((key) => {
+                statsStore.total[key].selected = !currentCheck;
+              });
+            }}
           />
-          {stats[key].name}
-        </label>
-      ))}
+          <div className="state p-success">
+            <label>Select all</label>
+          </div>
+        </div>
+
+        {Object.keys(statsStore.total).map((key, i) => (
+          <div className="pretty p-default p-curve checkbox-style" key={i}>
+            <input
+              type="checkbox"
+              checked={statsStore.total[key].selected}
+              onChange={() =>
+                (statsStore.total[key].selected = !statsStore.total[key]
+                  .selected)
+              }
+            />
+            <div className="state p-primary">
+              <label>{statsStore.total[key].name}</label>
+            </div>
+          </div>
+        ))}
+      </div>
     </div>
   );
-}
+});
 
 export default StatsCheckboxes;

@@ -1,44 +1,48 @@
+import { toJS } from "mobx";
+import { observer } from "mobx-react-lite";
+import { RootStoreContext } from "../lib/rootStore";
 import { useContext } from "react";
 import styled from "styled-components";
 import { useQuery } from "react-apollo-hooks";
 
-import { FilterContext } from "../lib/filterContext";
-
 import { statsByFilter } from "../queries/filter/update";
-import { SelectedContext } from "../lib/selectedContext";
 
 const Wrapper = styled.div``;
 
-export default () => {
-  const { selectedState } = useContext(SelectedContext);
+/**
+ * basically, get the query using useEffect
+ * then do it based on clicks after that...
+ */
 
-  const { data, error, loading } = useQuery(statsByFilter, {
-    variables: {
-      data: {
-        filters: selectedState.statsSelected,
-        tourn_ids: []
-      }
-    },
-    fetchPolicy: "network-only"
-  });
+const StatsRow = observer(() => {
+  const { tournamentStore, statsStore } = useContext(RootStoreContext);
 
-  if (loading) {
-    return (
-      <div className="stats-row">
-        <p>Loading...</p>
-      </div>
-    );
+  const avg = toJS(statsStore.avgToGet);
+  const total = toJS(statsStore.totalToGet);
+  const tournaments = toJS(tournamentStore.tournamentsToGet);
+
+  console.log(avg);
+  console.log(total);
+  console.log(tournaments);
+
+  if (avg.length === 0 || total.length === 0 || tournaments === 0) {
+    return null;
   }
 
-  if (error) {
-    return (
-      <div className="stats-row">
-        <p>Error...</p>
-      </div>
-    );
-  }
+  // const { data, loading, error } = useQuery(statsByFilter, {
+  //   variables: {
+  //     data: {
+  //       tourn_ids: tournaments,
+  //       avgOptions: avg,
+  //       totalOptions: total
+  //     }
+  //   },
+  //   fetchPolicy: "network-only"
+  // });
 
-  console.log(data);
+  // if (loading) return "loading..";
+  // if (error) return "error..";
+  // console.log(data);
 
   return (
     <Wrapper className="stats-row">
@@ -89,4 +93,6 @@ export default () => {
       ))}
     </Wrapper>
   );
-};
+});
+
+export default StatsRow;

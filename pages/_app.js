@@ -4,8 +4,6 @@ import { ApolloProvider } from "react-apollo";
 import { ApolloProvider as ApolloHooksProvider } from "react-apollo-hooks";
 
 import withApollo from "../lib/withApollo";
-import { FilterContextProvider } from "../lib/filterContext";
-import { SelectedContextProvider } from "../lib/selectedContext";
 
 class MyApp extends App {
   render() {
@@ -14,11 +12,7 @@ class MyApp extends App {
       <Container>
         <ApolloProvider client={apolloClient}>
           <ApolloHooksProvider client={apolloClient}>
-            <FilterContextProvider>
-              <SelectedContextProvider>
-                <Component {...pageProps} apolloClient={apolloClient} />
-              </SelectedContextProvider>
-            </FilterContextProvider>
+            <Component {...pageProps} apolloClient={apolloClient} />
           </ApolloHooksProvider>
         </ApolloProvider>
       </Container>
