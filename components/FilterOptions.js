@@ -57,12 +57,9 @@ const FilterOptions = ({ open, client }) => {
                * and send request to server
                * to update the results views
                */
-              const selectedAvg = statsStore.selectedAvg;
-              const selectedTotal = statsStore.selectedTotal;
-              const selectedTournaments = tournamentStore.selectedTournaments;
-              // console.log(selectedAvg);
-              // console.log(selectedTotal);
-              // console.log(selectedTournaments);
+              tournamentStore.setSelectedTournaments();
+              statsStore.setSelectedAvg();
+              statsStore.setSelectedTotal();
             }}
           >
             Update Results

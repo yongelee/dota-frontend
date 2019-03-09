@@ -1,9 +1,23 @@
 import gql from "graphql-tag";
 
-export const statsByFilter = gql`
+export const statsByFilterQuery = gql`
   query statsByFilter($data: StatsByFilterInput!) {
     statsByFilter(data: $data) {
-      name
+      average {
+        name
+        scores {
+          name
+          average
+          games_played
+        }
+      }
+      total {
+        name
+        scores {
+          name
+          total
+        }
+      }
     }
   }
 `;
