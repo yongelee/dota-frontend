@@ -29,9 +29,14 @@ const StatsDisplay = ({ tournaments, avg, total, limit }) => {
 
   return (
     <Wrapper className="stats-row">
+      <p className="subtitle is-3">Average rankings:</p>
+      <hr />
       {statsByFilter.average.map((avg, i) => (
         <AverageCard key={i} name={avg.name} scores={avg.scores} />
       ))}
+      <br />
+      <p className="subtitle is-3">Highest score rankings:</p>
+      <hr />
       {statsByFilter.total.map((t, i) => (
         <TotalCard key={i} name={t.name} scores={t.scores} />
       ))}

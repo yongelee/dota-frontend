@@ -8,7 +8,8 @@ import InfoTitle from "../components/InfoTitle";
 
 const Wrapper = styled.div`
   display: flex;
-  justify-content: center;
+  margin: 0 auto;
+  max-width: 1100px;
 `;
 
 const FilterMenu = styled.div`
@@ -16,6 +17,11 @@ const FilterMenu = styled.div`
   top: 9%;
   right: 3%;
   z-index: 12;
+
+  border: 1px solid rgba(0, 0, 0, 0.3);
+  border-radius: 5px;
+  background: white;
+  padding: 4px;
 
   @media (min-width: 1088px) {
     display: none;
@@ -27,11 +33,11 @@ export default ({ apolloClient }) => {
 
   return (
     <Layout>
-      <section className="section">
+      <InfoTitle />
+      <section className="section has-background-white-bis">
         <FilterMenu onClick={() => setOpen(!open)}>
           {`< Filter Options`}
         </FilterMenu>
-        <InfoTitle />
         <Wrapper>
           <StatsRow />
           <FilterOptions open={open} client={apolloClient} />

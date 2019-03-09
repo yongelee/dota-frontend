@@ -12,11 +12,7 @@ import "../static/styles.css";
 const Wrapper = styled.div`
   min-height: 100vh;
 `;
-const Inner = styled.div`
-  max-width: 1000px;
-  margin: 0 auto;
-  padding: 1rem;
-`;
+const Inner = styled.div``;
 
 export default ({ children }) => (
   <div>

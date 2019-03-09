@@ -1,7 +1,10 @@
 const AverageCard = ({ name, scores }) => {
   return (
     <div className="card score-card-style">
-      <h2 className="title">{`Average ${name}`}</h2>
+      <div className="card-header-style">
+        <h2 className="title">{`Average ${name}`}</h2>
+        <hr />
+      </div>
       <table className="table is-fullwidth is-striped is-hoverable">
         <thead>
           <tr>
