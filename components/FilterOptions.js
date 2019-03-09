@@ -74,6 +74,7 @@ const FilterOptions = observer(({ open, client }) => {
                  * and send request to server
                  * to update the results views
                  */
+                tournamentStore.limit = limit;
                 tournamentStore.setSelectedTournaments();
                 statsStore.setSelectedAvg();
                 statsStore.setSelectedTotal();
