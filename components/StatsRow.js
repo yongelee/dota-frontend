@@ -16,12 +16,20 @@ const StatsRow = observer(() => {
   const avg = toJS(statsStore.avgToGet);
   const total = toJS(statsStore.totalToGet);
   const tournaments = toJS(tournamentStore.tournamentsToGet);
+  const limit = tournamentStore.limit;
 
   if (avg.length === 0 || total.length === 0 || tournaments.length === 0) {
     return <div className="stats-row">Loading...</div>;
   }
 
-  return <StatsDisplay avg={avg} total={total} tournaments={tournaments} />;
+  return (
+    <StatsDisplay
+      avg={avg}
+      total={total}
+      tournaments={tournaments}
+      limit={limit}
+    />
+  );
 });
 
 export default StatsRow;

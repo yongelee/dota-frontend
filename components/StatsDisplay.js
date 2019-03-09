@@ -7,7 +7,7 @@ import TotalCard from "./TotalCard";
 
 const Wrapper = styled.div``;
 
-const StatsDisplay = ({ tournaments, avg, total }) => {
+const StatsDisplay = ({ tournaments, avg, total, limit }) => {
   const {
     data: { statsByFilter },
     loading,
@@ -17,7 +17,8 @@ const StatsDisplay = ({ tournaments, avg, total }) => {
       data: {
         tourn_ids: tournaments,
         avgOptions: avg,
-        totalOptions: total
+        totalOptions: total,
+        limit: Number(limit)
       }
     },
     fetchPolicy: "network-only"

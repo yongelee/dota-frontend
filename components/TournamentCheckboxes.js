@@ -3,7 +3,6 @@ import { RootStoreContext } from "../lib/rootStore";
 import { toJS } from "mobx";
 
 import { useContext, useEffect } from "react";
-import { useQuery } from "react-apollo-hooks";
 import { tournamentFormOptions } from "../queries/tournament/get";
 
 const TournamentCheckboxes = observer(({ client }) => {
@@ -18,9 +17,7 @@ const TournamentCheckboxes = observer(({ client }) => {
     });
   }, []);
 
-  // console.log(Map.prototype.size(tournamentStore.tournaments));
   const tournaments = toJS(tournamentStore.tournaments);
-  // console.log(toJS(tournamentStore.tournaments));
 
   return (
     <div className="columns">

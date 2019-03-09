@@ -1,4 +1,4 @@
-import { useContext } from "react";
+import { useContext, useState } from "react";
 import { observer } from "mobx-react-lite";
 import { RootStoreContext } from "../lib/rootStore";
 
@@ -7,7 +7,8 @@ import TournamentCheckboxes from "./TournamentCheckboxes";
 
 import "pretty-checkbox/dist/pretty-checkbox.min.css";
 
-const FilterOptions = ({ open, client }) => {
+const FilterOptions = observer(({ open, client }) => {
+  const [limit, setLimit] = useState(10);
   const { statsStore, tournamentStore } = useContext(RootStoreContext);
 
   return (
@@ -25,6 +26,7 @@ const FilterOptions = ({ open, client }) => {
                * and send request to server
                * to update the results views
                */
+              tournamentStore.limit = limit;
               tournamentStore.setSelectedTournaments();
               statsStore.setSelectedAvg();
               statsStore.setSelectedTotal();
@@ -32,6 +34,20 @@ const FilterOptions = ({ open, client }) => {
           >
             Update Results
           </button>
+        </div>
+      </div>
+      <div className="columns">
+        <div className="column">
+          <p className="subtitle">Top number rankings:</p>
+          <div className="select">
+            <select value={limit} onChange={(e) => setLimit(e.target.value)}>
+              <option value="5">5</option>
+              <option value="10">10</option>
+              <option value="15">15</option>
+              <option value="20">20</option>
+              <option value="25">25</option>
+            </select>
+          </div>
         </div>
       </div>
       <div className="columns">
@@ -68,6 +84,6 @@ const FilterOptions = ({ open, client }) => {
       </div>
     </div>
   );
-};
+});
 
 export default FilterOptions;
