@@ -4,6 +4,7 @@ import keyarena from "../static/img/keyarena.png";
 const Wrapper = styled.section`
   background-image: url(${keyarena});
   background-size: cover;
+  box-shadow: 0 0 5px 2px black;
 `;
 
 export default () => {

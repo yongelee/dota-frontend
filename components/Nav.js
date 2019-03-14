@@ -5,7 +5,7 @@ export default () => {
   const [open, setOpen] = useState(false);
 
   return (
-    <nav className="navbar is-light">
+    <nav className="navbar is-dark">
       <div className="container">
         <div className="navbar-brand">
           <Link href="/">

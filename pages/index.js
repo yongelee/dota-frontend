@@ -4,13 +4,8 @@ import styled from "styled-components";
 import Layout from "../components/layout";
 import StatsRow from "../components/StatsRow";
 import FilterOptions from "../components/FilterOptions";
-import InfoTitle from "../components/InfoTitle";
-
-const Wrapper = styled.div`
-  display: flex;
-  margin: 0 auto;
-  max-width: 1100px;
-`;
+import Header from "../components/Header";
+import TournamentsSelected from "../components/TournamentsSelected";
 
 const FilterMenu = styled.div`
   position: fixed;
@@ -33,15 +28,22 @@ export default ({ apolloClient }) => {
 
   return (
     <Layout>
-      <InfoTitle />
-      <section className="section has-background-white-bis">
+      <Header />
+      <section>
         <FilterMenu onClick={() => setOpen(!open)}>
           {`< Filter Options`}
         </FilterMenu>
-        <Wrapper>
-          <StatsRow />
-          <FilterOptions open={open} client={apolloClient} />
-        </Wrapper>
+        <div className="columns">
+          <div className="column center-it">
+            <FilterOptions open={open} client={apolloClient} />
+          </div>
+        </div>
+        <div className="columns">
+          <div className="column center-it">
+            <TournamentsSelected />
+          </div>
+        </div>
+        <StatsRow />
       </section>
     </Layout>
   );

@@ -10,6 +10,7 @@ import "bulma/css/bulma.min.css";
 import "../static/styles.css";
 
 const Wrapper = styled.div`
+  background-color: #272727;
   min-height: 100vh;
 `;
 const Inner = styled.div``;

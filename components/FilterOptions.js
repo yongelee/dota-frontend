@@ -18,28 +18,7 @@ const FilterOptions = observer(({ open, client }) => {
       <div className="filter-wrapper">
         <div className="columns">
           <div className="column">
-            <button
-              className="button is-fullwidth is-info"
-              onClick={() => {
-                /**
-                 * Get selected stats
-                 * and tournaments from mobx stores
-                 * and send request to server
-                 * to update the results views
-                 */
-                tournamentStore.limit = limit;
-                tournamentStore.setSelectedTournaments();
-                statsStore.setSelectedAvg();
-                statsStore.setSelectedTotal();
-              }}
-            >
-              Update Results
-            </button>
-          </div>
-        </div>
-        <div className="columns">
-          <div className="column">
-            <p className="subtitle">Top number rankings:</p>
+            <p className="subtitle has-text-white">Top number rankings:</p>
             <div className="select is-fullwidth">
               <select value={limit} onChange={(e) => setLimit(e.target.value)}>
                 <option value="5">5</option>
@@ -50,23 +29,17 @@ const FilterOptions = observer(({ open, client }) => {
               </select>
             </div>
           </div>
-        </div>
-        <div className="columns">
           <div className="column">
-            <p className="title is-5">Select Stats:</p>
+            <p className="title is-5 has-text-white">Select Stats:</p>
             <StatsCheckboxes />
           </div>
-        </div>
-        <div className="columns">
           <div className="column">
-            <p className="title is-5">Select Tournaments:</p>
+            <p className="title is-5 has-text-white">Select Tournaments:</p>
             <TournamentCheckboxes client={client} />
           </div>
-        </div>
-        <div className="columns">
           <div className="column">
             <button
-              className="button is-fullwidth is-info"
+              className="button is-fullwidth is-large"
               onClick={() => {
                 /**
                  * Get selected stats

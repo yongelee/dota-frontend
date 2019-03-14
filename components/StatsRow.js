@@ -15,7 +15,7 @@ const StatsRow = observer(() => {
 
   const avg = toJS(statsStore.avgToGet);
   const total = toJS(statsStore.totalToGet);
-  const tournaments = toJS(tournamentStore.tournamentsToGet);
+  const tournaments = toJS(tournamentStore.tournamentsToGet).map((t) => t.key);
   const limit = tournamentStore.limit;
 
   if (avg.length === 0 || total.length === 0 || tournaments.length === 0) {
