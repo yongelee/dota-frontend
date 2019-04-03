@@ -13,7 +13,7 @@ const StatsCheckboxes = observer(() => {
           <p className="subtitle has-text-white">Avg per game</p>
 
           {/* Select all button */}
-          <div className="pretty p-default p-curve checkbox-style">
+          <div className="pretty p-default p-curve big-check checkbox-style">
             <input
               type="checkbox"
               checked={statsStore.allAvg}
@@ -25,14 +25,17 @@ const StatsCheckboxes = observer(() => {
                 });
               }}
             />
-            <div className="state p-success">
+            <div className="state p-primary has-text-white">
               <label>Select all</label>
             </div>
           </div>
 
           {/* All of the stats options */}
           {Object.keys(statsStore.avg).map((key, i) => (
-            <div className="pretty p-default p-curve checkbox-style" key={i}>
+            <div
+              className="pretty p-default p-curve big-check checkbox-style"
+              key={i}
+            >
               <input
                 type="checkbox"
                 checked={statsStore.avg[key].selected}
@@ -40,8 +43,18 @@ const StatsCheckboxes = observer(() => {
                   (statsStore.avg[key].selected = !statsStore.avg[key].selected)
                 }
               />
-              <div className="state p-primary">
-                <label>{statsStore.avg[key].name}</label>
+              <div className="state p-success has-text-white">
+                <label>
+                  <p
+                    className={`${
+                      i % 2 === 0
+                        ? "bold screaming-green-text"
+                        : "font-light lime-text"
+                    }`}
+                  >
+                    {statsStore.avg[key].name}
+                  </p>
+                </label>
               </div>
             </div>
           ))}
@@ -50,10 +63,10 @@ const StatsCheckboxes = observer(() => {
       <div className="columns">
         {/* 2nd half is total */}
         <div className="column">
-          <p className="subtitle">Total</p>
+          <p className="subtitle has-text-white">Total</p>
 
           {/* Select all button */}
-          <div className="pretty p-default p-curve checkbox-style">
+          <div className="pretty p-default p-curve big-check checkbox-style">
             <input
               type="checkbox"
               checked={statsStore.allTotal}
@@ -65,13 +78,16 @@ const StatsCheckboxes = observer(() => {
                 });
               }}
             />
-            <div className="state p-success">
+            <div className="state p-primary has-text-white">
               <label>Select all</label>
             </div>
           </div>
 
           {Object.keys(statsStore.total).map((key, i) => (
-            <div className="pretty p-default p-curve checkbox-style" key={i}>
+            <div
+              className="pretty p-default p-curve big-check checkbox-style"
+              key={i}
+            >
               <input
                 type="checkbox"
                 checked={statsStore.total[key].selected}
@@ -80,8 +96,18 @@ const StatsCheckboxes = observer(() => {
                     .selected)
                 }
               />
-              <div className="state p-primary">
-                <label>{statsStore.total[key].name}</label>
+              <div className="state p-success has-text-white">
+                <label>
+                  <p
+                    className={`${
+                      i % 2 === 0
+                        ? "bold blizzard-blue-text"
+                        : "font-light sea-green-text"
+                    }`}
+                  >
+                    {statsStore.total[key].name}
+                  </p>
+                </label>
               </div>
             </div>
           ))}

@@ -19,7 +19,7 @@ const StatsRow = observer(() => {
   const limit = tournamentStore.limit;
 
   if (avg.length === 0 || total.length === 0 || tournaments.length === 0) {
-    return <div className="stats-row">Loading...</div>;
+    return <div>Loading...</div>;
   }
 
   return (

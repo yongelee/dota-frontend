@@ -5,9 +5,8 @@ import { statsByFilterQuery } from "../queries/filter/update";
 import AverageCard from "./AverageCard";
 import TotalCard from "./TotalCard";
 
-const Wrapper = styled.div`
-  display: flex;
-  justify-content: center;
+const ListWrapper = styled.div`
+  padding: 1rem;
 `;
 
 const StatsDisplay = ({ tournaments, avg, total, limit }) => {
@@ -31,26 +30,26 @@ const StatsDisplay = ({ tournaments, avg, total, limit }) => {
   if (error) return <div className="stats-row">Error...</div>;
 
   return (
-    <Wrapper className="stats-row">
-      <div className="columns is-variable is-8">
-        <div className="column">
-          <p className="subtitle is-3 has-text-white">Average rankings:</p>
-          <hr />
+    <div className="columns">
+      <div className="column">
+        <p className="subtitle is-3 has-text-white">Average rankings:</p>
+        <hr />
+        <ListWrapper>
           {statsByFilter.average.map((avg, i) => (
             <AverageCard key={i} name={avg.name} scores={avg.scores} />
           ))}
-        </div>
-        <div className="column">
-          <p className="subtitle is-3 has-text-white">
-            Highest score rankings:
-          </p>
-          <hr />
+        </ListWrapper>
+      </div>
+      <div className="column">
+        <p className="subtitle is-3 has-text-white">Highest score rankings:</p>
+        <hr />
+        <ListWrapper>
           {statsByFilter.total.map((t, i) => (
             <TotalCard key={i} name={t.name} scores={t.scores} />
           ))}
-        </div>
+        </ListWrapper>
       </div>
-    </Wrapper>
+    </div>
   );
 };
 

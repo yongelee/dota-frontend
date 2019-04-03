@@ -1,6 +1,67 @@
 .checkbox-style {
   display: block !important;
-  margin: 1rem 0;
+  margin: 1.5rem 0;
+}
+
+.border-top-tag {
+  border-top: 4px solid salmon;
+}
+
+.border-top-tag2 {
+  border-top: 4px solid greenyellow;
+}
+
+.border-top-avg {
+  border-top: 5px solid lime;
+}
+
+.border-top-total {
+  border-top: 5px solid fuchsia;
+}
+
+.sea-green-text {
+  color: #93dfb8;
+}
+
+.blizzard-blue-text {
+  color: #50bfe6;
+}
+
+.screaming-green-text {
+  color: #66ff66;
+}
+
+.shocking-pink-text {
+  color: #ff6eff;
+}
+
+.lime-text {
+  color: lime;
+}
+
+.fuchsia-text {
+  color: fuchsia;
+}
+
+.aqua-text {
+  color: aqua;
+}
+
+.electric-lime-text {
+  color: #ccff00;
+}
+
+.bold {
+  font-weight: bold;
+  font-style: italic;
+}
+
+.font-light {
+  font-weight: lighter;
+}
+
+.big-check {
+  font-size: 1.3rem;
 }
 
 .score-card-style {
@@ -22,25 +83,10 @@
 }
 
 .filter-options {
-  margin: 1.2rem 2rem;
-  max-height: 125px;
-  max-width: 800px;
   overflow: hidden;
   border: 1px solid rgba(0, 0, 0, 0.1);
   border-radius: 5px;
   box-shadow: 0px 0px 20px 3px black;
-}
-
-.filter-wrapper {
-  padding: 1rem;
-  background-color: #666;
-  border: 1px solid rgba(0, 0, 0, 0.1);
-}
-
-.stats-row {
-  margin: 1rem;
-  padding: 1rem;
-  border-radius: 5px;
 }
 
 @media (max-width: 1087px) {

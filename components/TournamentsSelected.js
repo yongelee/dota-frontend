@@ -5,10 +5,11 @@ import { toJS } from "mobx";
 import styled from "styled-components";
 
 const Wrapper = styled.div`
-  max-width: 1000px;
   display: flex;
   flex-direction: column;
   justify-content: center;
+  margin: 0.5rem;
+  padding: 2rem;
 `;
 const TournamentTagWrapper = styled.div`
   display: flex;
@@ -21,7 +22,7 @@ const TournamentsSelected = observer(() => {
   const tournaments = toJS(tournamentStore.tournamentsToGet).map((t) => t.name);
   return (
     <Wrapper>
-      <p className="subtitle has-text-white has-text-centered">
+      <p className="title has-text-white has-text-centered">
         Tournaments Selected
       </p>
       <hr />
@@ -29,13 +30,13 @@ const TournamentsSelected = observer(() => {
         {tournaments.map((tourn, i) => {
           if (i % 2 === 0) {
             return (
-              <span key={i} className="tag is-light is-medium">
+              <span key={i} className="tag is-light is-medium border-top-tag">
                 {tourn}
               </span>
             );
           }
           return (
-            <span key={i} className="tag is-light is-medium">
+            <span key={i} className="tag is-light is-medium border-top-tag2">
               {tourn}
             </span>
           );

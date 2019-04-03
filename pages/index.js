@@ -29,21 +29,26 @@ export default ({ apolloClient }) => {
   return (
     <Layout>
       <Header />
-      <section>
+      <section className="section">
         <FilterMenu onClick={() => setOpen(!open)}>
           {`< Filter Options`}
         </FilterMenu>
+
         <div className="columns">
-          <div className="column center-it">
-            <FilterOptions open={open} client={apolloClient} />
+          <div className="column is-3">
+            <FilterOptions client={apolloClient} open={open} />
+          </div>
+
+          <div className="column is-9">
+            <div className="columns">
+              <div className="column">
+                <TournamentsSelected />
+              </div>
+            </div>
+
+            <StatsRow />
           </div>
         </div>
-        <div className="columns">
-          <div className="column center-it">
-            <TournamentsSelected />
-          </div>
-        </div>
-        <StatsRow />
       </section>
     </Layout>
   );

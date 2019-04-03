@@ -29,7 +29,7 @@ const TournamentCheckboxes = observer(({ client }) => {
         {Object.entries(tournaments).length > 0 && (
           <>
             {/* Select all checkbox */}
-            <div className="pretty p-default p-curve checkbox-style">
+            <div className="pretty p-default p-curve big-check checkbox-style">
               <input
                 type="checkbox"
                 checked={tournamentStore.allTournaments}
@@ -41,13 +41,16 @@ const TournamentCheckboxes = observer(({ client }) => {
                   });
                 }}
               />
-              <div className="state p-success">
+              <div className="state p-primary has-text-white">
                 <label>Select all</label>
               </div>
             </div>
             {/* Tournament check box list */}
             {Object.keys(tournaments).map((key, i) => (
-              <div className="pretty p-default p-curve checkbox-style" key={i}>
+              <div
+                className="pretty p-default p-curve big-check checkbox-style"
+                key={i}
+              >
                 <input
                   type="checkbox"
                   checked={tournaments[key].selected}
@@ -57,8 +60,18 @@ const TournamentCheckboxes = observer(({ client }) => {
                     ].selected = !tournamentStore.tournaments[key].selected)
                   }
                 />
-                <div className="state p-primary">
-                  <label>{tournaments[key].name}</label>
+                <div className="state p-success has-text-white">
+                  <label>
+                    <p
+                      className={`${
+                        i % 2 === 0
+                          ? "bold electric-lime-text"
+                          : "font-light lime-text"
+                      } `}
+                    >
+                      {tournaments[key].name}
+                    </p>
+                  </label>
                 </div>
               </div>
             ))}
