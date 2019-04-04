@@ -83,7 +83,6 @@
 }
 
 .filter-options {
-  overflow: hidden;
   border: 1px solid rgba(0, 0, 0, 0.1);
   border-radius: 5px;
   box-shadow: 0px 0px 20px 3px black;
@@ -109,6 +108,11 @@
     to {
       right: -110%;
     }
+  }
+
+  .score-card-style {
+    padding: 0;
+    overflow-x: auto;
   }
 
   .filter-opened {

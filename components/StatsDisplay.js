@@ -7,6 +7,10 @@ import TotalCard from "./TotalCard";
 
 const ListWrapper = styled.div`
   padding: 1rem;
+
+  @media(max-width:700px) {
+    padding: 0;
+  }
 `;
 
 const StatsDisplay = ({ tournaments, avg, total, limit }) => {

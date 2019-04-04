@@ -10,7 +10,6 @@ import "pretty-checkbox/dist/pretty-checkbox.min.css";
 
 const Wrapper = styled.div`
   margin-right: 1rem;
-  overflow: hidden;
   border: 1px solid rgba(0, 0, 0, 0.1);
   border-radius: 5px;
   box-shadow: 0px 0px 20px 3px black;
@@ -78,26 +77,6 @@ const FilterOptions = observer(({ open, client }) => {
                 </div>
               </div>
             </div>
-            <div className="columns">
-              <div className="column">
-                <p className="title is-5 has-text-white">
-                  Select minimum games played:
-                </p>
-
-                <div className="select is-fullwidth is-info">
-                  <select
-                    value={played}
-                    onChange={(e) => setPlayed(e.target.value)}
-                  >
-                    <option value="5">5</option>
-                    <option value="10">10</option>
-                    <option value="15">15</option>
-                    <option value="20">20</option>
-                    <option value="25">25</option>
-                  </select>
-                </div>
-              </div>
-            </div>
           </div>
         </div>
         <div className="columns">
@@ -108,7 +87,7 @@ const FilterOptions = observer(({ open, client }) => {
           </div>
         </div>
         <div className="columns">
-          <div className="column">
+          <div className="column" style={{ overflowX: "hidden" }}>
             <p className="title is-5 has-text-white">Select Tournaments:</p>
             <TournamentCheckboxes client={client} />
           </div>
