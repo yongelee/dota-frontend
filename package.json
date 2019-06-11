@@ -6,8 +6,7 @@
   "scripts": {
     "dev": "next",
     "build": "next build",
-    "start": "next start -p $PORT",
-    "heroku-postbuild": "npm run build"
+    "start": "next build && next start -p 8081 -H 127.0.0.1"
   },
   "dependencies": {
     "@babel/plugin-proposal-class-properties": "^7.3.3",
