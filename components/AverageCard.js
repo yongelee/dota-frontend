@@ -4,11 +4,11 @@ const CardWrapper = styled.div`
   margin: 2rem 0;
 `;
 
-const AverageCard = ({ name, scores }) => {
+const AverageCard = ({name, scores}) => {
   return (
     <CardWrapper className="card score-card-style border-top-avg">
       <div className="card-header-style">
-        <h2 className="title">{`Average ${name}`}</h2>
+        <h2 className="title" style={{textTransform: "capitalize"}}>{`${name.replace(/_/g, ' ')}`} avg</h2>
         <hr />
       </div>
       <table className="table is-fullwidth is-striped is-hoverable">
@@ -23,15 +23,15 @@ const AverageCard = ({ name, scores }) => {
         <tbody>
           {scores.map((score, i) => {
             let size;
-            if (i === 0) {
-              size = "is-size-3";
-            } else if (i === 1) {
-              size = "is-size-4";
-            } else if (i === 2) {
-              size = "is-size-5";
-            } else {
-              size = "is-size-6";
-            }
+            // if (i === 0) {
+            //   size = "is-size-3";
+            // } else if (i === 1) {
+            //   size = "is-size-4";
+            // } else if (i === 2) {
+            //   size = "is-size-5";
+            // } else {
+            size = "is-size-5";
+            // }
             return (
               <tr key={i}>
                 <td className={`${size}`}>{`${i + 1}.`}</td>

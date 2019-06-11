@@ -2,7 +2,7 @@ import Layout from "../components/layout";
 import StatsRow from "../components/StatsRow";
 import Filter from "../components/filter/Filter";
 
-export default ({ apolloClient }) => {
+const Stats = ({apolloClient}) => {
   return (
     <Layout>
       <Filter client={apolloClient} />
@@ -15,3 +15,4 @@ export default ({ apolloClient }) => {
     </Layout>
   );
 };
+export default Stats;

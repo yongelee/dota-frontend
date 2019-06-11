@@ -1,7 +1,7 @@
-import { useQuery } from "react-apollo-hooks";
+import {useQuery} from "react-apollo-hooks";
 import styled from "styled-components";
 
-import { statsByFilterQuery } from "../queries/filter/update";
+import {statsByFilterQuery} from "../queries/filter/update";
 import AverageCard from "./AverageCard";
 import TotalCard from "./TotalCard";
 
@@ -13,9 +13,9 @@ const ListWrapper = styled.div`
   }
 `;
 
-const StatsDisplay = ({ tournaments, avg, total, limit }) => {
+const StatsDisplay = ({tournaments, avg, total, limit, minGames}) => {
   const {
-    data: { statsByFilter },
+    data: {statsByFilter},
     loading,
     error
   } = useQuery(statsByFilterQuery, {
@@ -24,7 +24,8 @@ const StatsDisplay = ({ tournaments, avg, total, limit }) => {
         tourn_ids: tournaments,
         avgOptions: avg,
         totalOptions: total,
-        limit: Number(limit)
+        limit,
+        minGames
       }
     },
     fetchPolicy: "network-only"
@@ -36,7 +37,7 @@ const StatsDisplay = ({ tournaments, avg, total, limit }) => {
   return (
     <div className="columns">
       <div className="column">
-        <p className="subtitle is-3 has-text-white">Average rankings:</p>
+        {/* <p className="subtitle is-3">Average rankings:</p> */}
         <hr />
         <ListWrapper>
           {statsByFilter.average.map((avg, i) => (
@@ -45,7 +46,7 @@ const StatsDisplay = ({ tournaments, avg, total, limit }) => {
         </ListWrapper>
       </div>
       <div className="column">
-        <p className="subtitle is-3 has-text-white">Highest score rankings:</p>
+        {/* <p className="subtitle is-3">Highest score rankings:</p> */}
         <hr />
         <ListWrapper>
           {statsByFilter.total.map((t, i) => (

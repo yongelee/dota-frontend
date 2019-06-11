@@ -1,3 +1,11 @@
+.trigger-enter {
+  display: block !important;
+}
+
+.trigger-enter-active {
+  opacity: 1 !important;
+}
+
 .checkbox-style {
   display: block !important;
   margin: 1.5rem 0;

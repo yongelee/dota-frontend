@@ -6,16 +6,17 @@ import styled from "styled-components";
 
 import Nav from "./Nav";
 
+import "pretty-checkbox/dist/pretty-checkbox.min.css";
 import "bulma/css/bulma.min.css";
 import "../static/styles.css";
 
 const Wrapper = styled.div`
-  background-color: #888;
+  /* background-color: #eaeaea; */
   min-height: 100vh;
 `;
 const Inner = styled.div``;
 
-export default ({ children }) => (
+export default ({children}) => (
   <div>
     <Head>
       <title>
