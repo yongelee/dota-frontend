@@ -5,7 +5,7 @@ export const tournamentFormOptions = gql`
     tournamentFormOptions {
       id
       name
-      date
+      season
     }
   }
 `;
